@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Product</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Add Product</h1>
+
+<input id="name" placeholder="Product Name"><br><br>
+
+<input id="price" placeholder="Price"><br><br>
+
+<textarea id="description" placeholder="Description"></textarea><br><br>
+
+<input id="image" placeholder="Image URL"><br><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+</div>
+
+<script src="../js/api.js"></script>
+
+<script>
+window.API_BASE = (window.API_BASE || '').replace(/\/$/, '');
+
+async function addProduct(){
+
+const name = document.getElementById("name").value;
+const price = document.getElementById("price").value;
+const description = document.getElementById("description").value;
+const image = document.getElementById("image").value;
+
+await fetch(window.API_BASE + "/api/products",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer "+localStorage.getItem("token")
+},
+
+body:JSON.stringify({
+name,
+price,
+description,
+images:[image]
+})
+
+});
+
+alert("Product Added");
+
+}
+
+</script>
+
+</body>
+</html>

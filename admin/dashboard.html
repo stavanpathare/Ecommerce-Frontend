@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="icon" type="image/png" href="../icons/dashboard.png">
+<link rel="stylesheet" href="css/admin.css">
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+</head>
+
+<body>
+
+<div class="admin-container">
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+<h2>Admin Panel</h2>
+
+<ul>
+    <li onclick="go('dashboard.html')">Dashboard</li>
+    <li onclick="go('products.html')">Manage Products</li>
+    <li onclick="go('orders.html')">Orders</li>
+    <li><button onclick="logout()" class="logout-btn">Logout</button></li>
+</ul>
+
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+<h1>Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Products</h3>
+<p id="totalProducts">0</p>
+</div>
+
+<div class="card">
+<h3>Total Orders</h3>
+<p id="totalOrders">0</p>
+</div>
+
+<div class="card">
+<h3>Total Revenue</h3>
+<p id="totalRevenue">₹0</p>
+</div>
+
+</div>
+
+<!-- New Arrivals Manager -->
+<div class="main-section">
+    <h2>Manage New Arrivals</h2>
+
+    <div class="na-manager">
+        <form id="naForm">
+            <label>Title</label>
+            <input type="text" id="naTitle" required placeholder="Product name">
+
+            <label>Image</label>
+            <input type="file" id="naImage" accept="image/*" required>
+
+
+            <button type="submit">Add New Arrival</button>
+        </form>
+
+        <h3>Current New Arrivals</h3>
+        <div id="newArrivalsList" class="na-list">
+            <!-- populated by admin/js/newarrivals-admin.js -->
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/dashboard.js"></script>
+
+<script src="js/newarrivals-admin.js"></script>
+
+<script>
+// small mobile toggle for sidebar
+(function(){
+  var sidebar = document.querySelector('.sidebar');
+  if(!sidebar) return;
+  var btn = document.createElement('button');
+  btn.className = 'toggle-btn';
+  btn.innerHTML = '\u2630'; // hamburger
+  btn.setAttribute('aria-label','Toggle navigation');
+  btn.addEventListener('click', function(){ sidebar.classList.toggle('open'); });
+  // insert before title
+  var h2 = sidebar.querySelector('h2');
+  if(h2) h2.parentNode.insertBefore(btn, h2.nextSibling);
+})();
+</script>
+</body>
+</html>

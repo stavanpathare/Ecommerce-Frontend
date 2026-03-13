@@ -1,0 +1,81 @@
+/* account.css - Modern Minimal Style */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f4f9;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.account-card {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transition: 0.3s ease;
+}
+
+.account-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.account-card h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+    color: #111;
+}
+
+.account-card p {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #444;
+}
+
+.account-card p span {
+    font-weight: 600;
+    color: #111;
+}
+
+.account-card button {
+    margin-top: 35px;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.account-card button:hover {
+    background: #333;
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+    .account-card {
+        padding: 40px 25px;
+    }
+
+    .account-card h1 {
+        font-size: 24px;
+    }
+
+    .account-card p {
+        font-size: 16px;
+    }
+
+    .account-card button {
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+}

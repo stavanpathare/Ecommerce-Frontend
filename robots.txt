@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /cart
+Disallow: /login
+Disallow: /checkout
+Disallow: /account
+Disallow: /orders
+Disallow: /forgot-password
+Disallow: /reset-password
+
+Sitemap: https://rajaformens.netlify.app/sitemap.xml
