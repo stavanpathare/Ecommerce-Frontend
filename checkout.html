@@ -7,6 +7,7 @@
 <title>Checkout</title>
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/checkout.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="icon" type="image/png" href="icons/checkout.png">
 
@@ -42,21 +43,36 @@
 
 <h2>Checkout</h2>
 
-<h3>Shipping Details</h3>
+<div class="input-group">
+  <input id="name" placeholder=" " required>
+  <label>Full Name</label>
+</div>
 
-<input id="name" placeholder="Full Name"><br><br>
+<div class="input-group">
+  <input id="phone" type="tel" placeholder=" " required>
+  <label>Phone Number</label>
+</div>
 
-<input id="phone" placeholder="Phone Number"><br><br>
+<div class="input-group">
+  <input id="address" placeholder=" " required>
+  <label>Address</label>
+</div>
 
-<input id="address" placeholder="Address"><br><br>
+<div class="input-group">
+  <input id="city" placeholder=" " required>
+  <label>City</label>
+</div>
 
-<input id="city" placeholder="City"><br><br>
-
-<input id="pincode" placeholder="Pincode"><br><br>
-
-<h3>Total: ₹<span id="total"></span></h3>
+<div class="input-group">
+  <input id="pincode" type="number" placeholder=" " required>
+  <label>Pincode</label>
+</div>
+<h3>Total: ₹<span id="total">0</span></h3>
 
 <button onclick="payNow()">Pay Now</button>
+<p style="font-size:12px; color:#777; text-align:center; margin-top:10px;">
+Secure payment powered by Razorpay
+</p>
 
 </div>
 

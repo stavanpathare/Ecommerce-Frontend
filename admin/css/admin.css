@@ -373,3 +373,150 @@ ul li button.logout-btn:hover {
 
     .na-row{ padding:8px; }
 }
+/* ===== Layout ===== */
+
+.main {
+    padding: 20px;
+    background: #f6f6f6;
+    min-height: 100vh;
+}
+
+/* ===== Orders Container ===== */
+
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ===== Order Card ===== */
+
+.order-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #eee;
+    transition: 0.2s ease;
+}
+
+.order-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ===== Left Section (Product) ===== */
+
+.order-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 35%;
+}
+
+.order-left img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.order-info {
+    font-size: 14px;
+}
+
+.order-info strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.order-info span {
+    color: #555;
+    font-size: 13px;
+}
+
+/* ===== User Section ===== */
+
+.order-user {
+    width: 30%;
+    font-size: 14px;
+}
+
+.order-user strong {
+    display: block;
+}
+
+/* ===== Total Section ===== */
+
+.order-total {
+    width: 15%;
+    font-weight: 600;
+}
+
+/* ===== Status Section ===== */
+
+.order-status {
+    width: 10%;
+    font-size: 13px;
+}
+
+/* ===== Action Section ===== */
+
+.order-action {
+    width: 10%;
+}
+
+.order-action select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* ===== Status Colors ===== */
+
+.paid {
+    color: green;
+    font-weight: 500;
+}
+
+.pending {
+    color: orange;
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 768px) {
+    .order-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .order-left,
+    .order-user,
+    .order-total,
+    .order-status,
+    .order-action {
+        width: 100%;
+    }
+}
+.order-product {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.order-product img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.order-date {
+    font-size: 12px;
+    color: #777;
+    margin-top: 6px;
+}
