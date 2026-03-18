@@ -4,11 +4,10 @@ body {
     background: #f4f4f9;
     color: #222;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 0; /* removed centering */
+    /* keep page content below navbar */
+    padding-top: 80px; /* reserve space for navbar */
+    min-height: 100vh;
 }
 
 .account-card {
@@ -20,6 +19,7 @@ body {
     max-width: 400px;
     width: 90%;
     transition: 0.3s ease;
+    margin: 40px auto; /* center horizontally and give vertical spacing */
 }
 
 .account-card:hover {
@@ -62,8 +62,10 @@ body {
 
 /* Responsive */
 @media screen and (max-width: 480px) {
+    body{ padding-top: 70px; }
     .account-card {
         padding: 40px 25px;
+        margin: 24px 16px;
     }
 
     .account-card h1 {

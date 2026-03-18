@@ -27,6 +27,8 @@
     <div class="logo">RAJA FOR MENS & FOOTWEAR</div>
 </div>
 
+<div class="menu-toggle" id="menuToggle">☰</div>
+
 <div class="nav-links">
 
 <a href="index.html">Home</a>
@@ -49,7 +51,16 @@
 <script src="js/orders.js"></script>
 <script src="js/navbar.js"></script>
     <script src="js/config.js"></script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+const navLinks = document.querySelector(".nav-links");
 
+if (toggle) {
+    toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
+</script>
 
 </body>
 </html>

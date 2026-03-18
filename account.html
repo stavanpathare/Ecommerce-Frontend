@@ -5,11 +5,33 @@
     <title>My Account</title>
     <link rel="stylesheet" href="css/account.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
 
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
 </head>
 <body>
+<nav class="navbar">
+
+<div class="container nav-wrapper">
+
+<div class="brand">
+    </a><img src="icons/image.png" alt="Logo" class="brand-icon">
+    <div class="logo">RAJA FOR MENS & FOOTWEAR</div>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="products.html">Shop</a>
+<a href="cart.html" id="cartLink">Cart <span id="cartCount" class="cart-count">0</span></a>
+
+</div>
+
+</div>
+
+</nav>
 
 <div class="account-card">
     <h1>My Account</h1>
@@ -20,6 +42,16 @@
 
 <script src="js/account.js"></script>
     <script src="js/config.js"></script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (toggle) {
+    toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
+</script>
 
 </body>
 </html>

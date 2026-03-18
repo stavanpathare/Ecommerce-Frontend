@@ -25,6 +25,7 @@
         <a href="index.html"> <img src="icons/image.png" alt="Logo" class="brand-icon"> </a>
     <div class="logo">RAJA FOR MENS & FOOTWEAR</div>
 </div>
+<div class="menu-toggle" id="menuToggle">☰</div>
 
 <div class="nav-links">
 
@@ -49,6 +50,7 @@
 <h3>Total: ₹<span id="totalPrice">0</span></h3>
 
 <button id="proceedToCheckoutBtn">Proceed To Checkout</button>
+
 
 </div>
 
@@ -89,6 +91,15 @@
 </footer>
 
 <script>document.getElementById('year-cart').innerText=new Date().getFullYear();</script>
+<script>
+  const toggle = document.getElementById("menuToggle");
+const navLinks = document.querySelector(".nav-links");
 
+if (toggle) {
+    toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
+</script>
 </body>
 </html>

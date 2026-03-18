@@ -1,6 +1,8 @@
+// ===== Init =====
 document.addEventListener("DOMContentLoaded", () => {
 
     window.API_BASE = (window.API_BASE || '').replace(/\/$/, '');
+
     const cartContainer = document.getElementById("cartItems");
     const totalPriceEl = document.getElementById("totalPrice");
 
@@ -9,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-    // Load and render cart
+    // ===== Load Cart =====
     async function loadCart() {
         cartContainer.innerHTML = "";
         let total = 0;
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 const res = await fetch(`${window.API_BASE}/api/products/${item.productId}`);
                 if (!res.ok) continue;
+
                 const product = await res.json();
                 if (!product) continue;
 
@@ -61,64 +64,65 @@ document.addEventListener("DOMContentLoaded", () => {
         totalPriceEl.innerText = total;
     }
 
-    // Cart operations
-    window.addToCart = function(productId, size) {
-        if (!size) { alert("Please select size"); return; }
-
-        const existingItem = cart.find(item => item.productId === productId && item.size === size);
-        if (existingItem) existingItem.qty++;
-        else cart.push({ productId, size, qty: 1 });
-
-        localStorage.setItem(cartKey, JSON.stringify(cart));
-        loadCart();
-        if (window.updateCartBadge) window.updateCartBadge();
-        alert("Added to cart");
-    }
-
-    window.increaseQty = function(productId, size) {
+    // ===== Cart Operations =====
+    window.increaseQty = function (productId, size) {
         cart = cart.map(item => {
             if (item.productId === productId && item.size === size) item.qty++;
             return item;
         });
         localStorage.setItem(cartKey, JSON.stringify(cart));
         loadCart();
-        if (window.updateCartBadge) window.updateCartBadge();
-    }
+        window.updateCartBadge?.();
+    };
 
-    window.decreaseQty = function(productId, size) {
+    window.decreaseQty = function (productId, size) {
         cart = cart.map(item => {
             if (item.productId === productId && item.size === size && item.qty > 1) item.qty--;
             return item;
         });
         localStorage.setItem(cartKey, JSON.stringify(cart));
         loadCart();
-        if (window.updateCartBadge) window.updateCartBadge();
-    }
+        window.updateCartBadge?.();
+    };
 
-    window.removeItem = function(productId, size) {
+    window.removeItem = function (productId, size) {
         cart = cart.filter(item => !(item.productId === productId && item.size === size));
         localStorage.setItem(cartKey, JSON.stringify(cart));
         loadCart();
-        if (window.updateCartBadge) window.updateCartBadge();
-    }
+        window.updateCartBadge?.();
+    };
 
-    // Initial render
-    loadCart();
-
-    // Proceed to checkout handler — ensures at least one product in cart
+    // ===== Proceed to Checkout (FIXED) =====
     window.proceedToCheckout = function () {
-        const currentCart = JSON.parse(localStorage.getItem(cartKey)) || [];
-        const totalItems = currentCart.reduce((s, it) => s + (Number(it.qty) || 1), 0);
-        if (totalItems <= 0) {
-            alert('Please add at least one product to proceed to checkout.');
+
+        const user = JSON.parse(localStorage.getItem("user"));
+        const token = localStorage.getItem("token");
+
+        // ✅ Check empty cart
+        if (cart.length === 0) {
+            alert("Your cart is empty");
             return;
         }
-        // navigate to checkout page
-        window.location = 'checkout.html';
+
+        // ✅ Check login
+        if (!user || !token) {
+            alert("Please login to continue");
+
+            localStorage.setItem("redirectAfterLogin", "checkout.html");
+            window.location.href = "login.html";
+            return;
+        }
+
+        // ✅ Go to checkout
+        window.location.href = "checkout.html";
+    };
+
+    // ===== Attach Button =====
+    const proceedBtn = document.getElementById("proceedToCheckoutBtn");
+    if (proceedBtn) {
+        proceedBtn.addEventListener("click", window.proceedToCheckout);
     }
 
-    // attach click listener to button if present
-    const proceedBtn = document.getElementById('proceedToCheckoutBtn');
-    if (proceedBtn) proceedBtn.addEventListener('click', window.proceedToCheckout);
-
+    // ===== Initial Load =====
+    loadCart();
 });
