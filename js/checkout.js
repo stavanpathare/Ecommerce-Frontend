@@ -151,7 +151,7 @@ function openRazorpay(order, orderData) {
   const token = localStorage.getItem("token");
 
   const options = {
-    key: "rzp_test_SSAvyt5rWqEQh6", // ✅ FIXED FORMAT
+    key: "rzp_test_T8GXKjxjWuLVtU", // ✅ FIXED FORMAT
 
     amount: order.amount,
     currency: "INR",
